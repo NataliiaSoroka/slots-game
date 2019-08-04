@@ -3,21 +3,25 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "cross-env NODE_ENV=production webpack",
     "start": "webpack-dev-server --open"
   },
   "author": "Nataliia Soroka <nataliiasoroka.gm@gmail.com>",
   "devDependencies": {
     "@types/pixi.js": "^4.5.4",
-    "clean-webpack-plugin": "^0.1.16",
-    "html-webpack-plugin": "^2.30.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "cross-env": "^5.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "imagemin-webpack-plugin": "^2.4.2",
+    "pixi.js": "^5.1.1",
     "script-loader": "^0.7.1",
-    "ts-loader": "^2.3.2",
-    "typescript": "^2.4",
-    "webpack": "^3.5",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
     "webpack-dev-server": ">=3.1.11",
-    "webpack-merge": "^4.1",
-    "pixi.js": "^4.5.6"
+    "webpack-merge": "^4.1"
   },
   "dependencies": {
     "mem": ">=4.0.0"

@@ -1,11 +1,13 @@
 'use strict';
 
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const path = require('path');
 
-var distDir = path.resolve(__dirname, 'dist');
+const distDir = path.resolve(__dirname, 'dist');
 
 module.exports = {
     // Entry point : first executed file
@@ -36,12 +38,23 @@ module.exports = {
     },
 
     devServer: {
-        contentBase: './dist'
+        contentBase: ['./dist', './src']
     },
 
 
     plugins: [
-        new CleanWebpackPlugin([distDir]),
+        new CopyWebpackPlugin([{
+            from: './src/assets',
+            to: 'assets'
+          }]),
+        new ImageminPlugin({ 
+            disable: process.env.NODE_ENV !== 'production',
+            test: /\.(jpe?g|png|gif|svg)$/i ,
+            optipng: {
+                optimizationLevel: 9
+              }
+        }),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         })
