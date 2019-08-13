@@ -7,7 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const path = require('path');
 
-const distDir = path.resolve(__dirname, 'dist');
+const distDir = path.resolve(__dirname, 'docs');
 
 module.exports = {
     // Entry point : first executed file
@@ -38,7 +38,7 @@ module.exports = {
     },
 
     devServer: {
-        contentBase: ['./dist', './src']
+        contentBase: ['./docs', './src']
     },
 
 
